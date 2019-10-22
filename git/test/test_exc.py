@@ -167,3 +167,21 @@ class TExc(TestBase):
             self.assertIn(str(cause), s)
         else:
             self.assertIn(' failed!', s)
+
+    def test_WinError6(self):
+        from git.cmd import Git
+        # Simulates repo.git.add(update=True), which runs into the error
+        my_git = Git()
+        # cmd1 = ['git', 'cat-file', '--batch-check']
+        # cmd2 = ['git', 'cat-file', '--batch']
+        cmd1 = ['git', 'status']
+        auto_interrupt1 = my_git.execute(cmd1, istream=-1, as_process=True)
+        # auto_interrupt2 = my_git.execute(cmd2)
+        auto_interrupt1.__del__()
+        # auto_interrupt2.__del__()
+        # cmd.Git.AutoInterrupt(proc, command)
+
+        # repo = Repo()
+        # repo.git.add(update=True)
+
+        pass
